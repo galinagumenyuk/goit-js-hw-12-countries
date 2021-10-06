@@ -1,4 +1,4 @@
-import fetchCountries from "./fetchCountries";
+// import fetchCountries from "./fetchCountries";
 import * as _ from "lodash";
 import listTpl from "./templateList.hbs";
 import cardTpl from "./templateCard.hbs";
@@ -34,4 +34,12 @@ function onInput(e) {
       });
     }
   });
+}
+function fetchCountries(e) {
+  const searchQuery = e.target.value;
+
+  const url = `https://restcountries.com/v2/name/${searchQuery}`;
+  return fetch(url)
+    .then((response) => response.json())
+    .then((data) => data);
 }
