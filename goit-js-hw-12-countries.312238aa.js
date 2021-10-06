@@ -117,24 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"SvwL":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = fetchCountries;
-
-function fetchCountries(e) {
-  var searchQuery = e.target.value;
-  var url = "https://restcountries.com/v2/name/".concat(searchQuery);
-  return fetch(url).then(function (response) {
-    return response.json();
-  }).then(function (data) {
-    return data;
-  });
-}
-},{}],"FRly":[function(require,module,exports) {
+})({"FRly":[function(require,module,exports) {
 'use strict'
 
 exports.byteLength = byteLength
@@ -21606,8 +21589,6 @@ var global = arguments[3];
 },{}],"Focm":[function(require,module,exports) {
 "use strict";
 
-var _fetchCountries = _interopRequireDefault(require("./fetchCountries"));
-
 var _ = _interopRequireWildcard(require("lodash"));
 
 var _templateList = _interopRequireDefault(require("./templateList.hbs"));
@@ -21622,11 +21603,11 @@ require("@pnotify/core/dist/BrightTheme.css");
 
 require("./styles.css");
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
@@ -21649,7 +21630,7 @@ inputEl.addEventListener("input", _.debounce(onInput, 500));
 
 function onInput(e) {
   e.preventDefault();
-  (0, _fetchCountries.default)(e).then(function (data) {
+  fetchCountries(e).then(function (data) {
     container.innerHTML = "";
     myStack.close(true);
 
@@ -21669,5 +21650,15 @@ function onInput(e) {
     }
   });
 }
-},{"./fetchCountries":"SvwL","lodash":"HJaA","./templateList.hbs":"GusF","./templateCard.hbs":"g0We","@pnotify/core":"GeCc","@pnotify/mobile":"JFTi","@pnotify/core/dist/BrightTheme.css":"PZnl","./styles.css":"PZnl"}]},{},["Focm"], null)
-//# sourceMappingURL=/goit-js-hw-12-countries/goit-js-hw-12-countries.62fd1e45.js.map
+
+function fetchCountries(e) {
+  var searchQuery = e.target.value;
+  var url = "https://restcountries.com/v2/name/".concat(searchQuery);
+  return fetch(url).then(function (response) {
+    return response.json();
+  }).then(function (data) {
+    return data;
+  });
+}
+},{"lodash":"HJaA","./templateList.hbs":"GusF","./templateCard.hbs":"g0We","@pnotify/core":"GeCc","@pnotify/mobile":"JFTi","@pnotify/core/dist/BrightTheme.css":"PZnl","./styles.css":"PZnl"}]},{},["Focm"], null)
+//# sourceMappingURL=/goit-js-hw-12-countries/goit-js-hw-12-countries.312238aa.js.map
